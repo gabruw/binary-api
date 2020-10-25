@@ -8,7 +8,7 @@ ASP .NET Core 3.1
 MySQL 8
 
 ## Premissa
-Está aplicação NÂO possuí o intuito de simplificar a resolução do problema ao máximo, e sim exemplificar implementações diversas
+Está aplicação NÃO possuí o intuito de simplificar a resolução do problema ao máximo, e sim exemplificar implementações diversas
 presentes no dia-a-dia do desenvolvedor como implementação de Design Patters, elaboração de testes, funcionalidades genéricas, etc...
 Algumas implementações fora do escopo proposto foram adicionadas com o intuito de expandir a usabilidade.
 
