@@ -11,26 +11,45 @@ API em ASP .NET Core 3.1 que tem como intuito manipular dados binários.
 ## Testes efetuados
 - [X] Testes Unitários
 - [X] Testes de Integração
+- [X] Testes de Mutação
 
 ## Premissa
 Está aplicação NÃO possuí o intuito de simplificar a resolução do problema ao máximo, e sim exemplificar implementações diversas
 presentes no dia-a-dia do desenvolvedor como implementação de Design Patters, elaboração de testes, funcionalidades genéricas, etc...
 Algumas implementações fora do escopo proposto foram adicionadas com o intuito de expandir a usabilidade.
 
-### Executando a Aplicação
-1. Na pasta raiz do projeto, busque pelo caminho "~/Api/bin/Debug/netcoreapp3.1"
-2. No caminho, execute o arquivo "Api.exe"
-
 ### Executando os Testes
 
-#### Visual Studio 2019
+#### Testes Unitários e de Integração
+
+##### Visual Studio 2019
 1. Pressione "Ctrl + E, T" ou abra o "Gerenciador de Testes"
 2. Use o menu para executar os testes
 
-#### Comando
+##### Comando
 1. Abra uma janela do terminal na pasta raiz do projeto
 2. Execute o comando "dotnet test"
 3. Aguarde o resultado dos testes
+
+#### Testes de Mutação
+Para executar este tipo de teste, é necessário possuir o "Stryker Mutator" instalado globalmente. Maiores informações podem ser
+obtidas através do link: https://stryker-mutator.io/
+
+##### Padrão
+1. Abra uma janela do terminal na pasta raiz do projeto e busque pelo caminho do projeto relativo ao tipo de teste
+que desejar
+2. Execute o comando "dotnet stryker -p {caminho}", onde o "{caminho}" é relativo aos projeto envolvidos no teste
+3. Aguarde o resultado dos testes
+4. Acesse a pasta "StrykerOutput" e selecione a pasta do ultimo "report" efetuado
+5. Execute o arquivo ".html"
+
+##### Stryker Config
+1. Abra uma janela do terminal na pasta raiz do projeto e busque pelo caminho do projeto relativo ao tipo de teste
+que desejar
+2. Execute o comando "dotnet stryker"
+3. Aguarde o resultado dos testes
+4. Acesse a pasta "StrykerOutput" e selecione a pasta do ultimo "report" efetuado
+5. Execute o arquivo ".html"
 
 ## Básico
 
@@ -71,6 +90,10 @@ dotnet ef migrations add FirstMigration
 ```
 dotnet ef database update FirstMigration
 ```
+
+### Executando a Aplicação
+1. Na pasta raiz do projeto, busque pelo caminho "~/Api/bin/Debug/netcoreapp3.1"
+2. No caminho, execute o arquivo "Api.exe"
 
 ### Usabilidade
 
