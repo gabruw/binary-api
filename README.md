@@ -12,6 +12,20 @@ Está aplicação NÂO possuí o intuito de simplificar a resolução do problem
 presentes no dia-a-dia do desenvolvedor como implementação de Design Patters, elaboração de testes, funcionalidades genéricas, etc...
 Algumas implementações fora do escopo proposto foram adicionadas com o intuito de expandir a usabilidade.
 
+### Executando a Aplicação
+1. Na pasta raiz do projeto, busque pelo caminho "~/Api/Api/bin/Debug/netcoreapp3.1"
+2. No caminho, execute o arquivo "Api.exe"
+
+### Executando os Testes
+#### Visual Studio 2019
+1. Pressione "Ctrl + E, T" ou abra o "Gerenciador de Testes"
+2. Use o menu para executar os testes
+
+#### Comando
+1. Abra uma janela do terminal na pasta raiz do projeto
+2. Execute o comando "dotnet test"
+3. Aguarde o resultado dos testes
+
 ## Básico
 Para funcionalidade básica, envie uma requisição POST com o JSON no body (como no exemplo) para o método Left (v1/diff/left)
 e outra para o método Right (v1/diff/right).
