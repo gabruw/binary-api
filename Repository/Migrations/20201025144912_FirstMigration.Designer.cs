@@ -8,8 +8,8 @@ using Repository.Context;
 namespace Repository.Migrations
 {
     [DbContext(typeof(ApiContext))]
-    [Migration("20201022114217_First")]
-    partial class First
+    [Migration("20201025144912_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,22 +48,6 @@ namespace Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DiffRight");
-                });
-
-            modelBuilder.Entity("Domain.Entity.Result", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(255)")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Result");
                 });
 #pragma warning restore 612, 618
         }

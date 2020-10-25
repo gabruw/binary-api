@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repository.Migrations
 {
-    public partial class First : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,19 +32,6 @@ namespace Repository.Migrations
                 {
                     table.PrimaryKey("PK_DiffRight", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Result",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Value = table.Column<string>(type: "VARCHAR(255)", maxLength: 255, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Result", x => x.Id);
-                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -54,9 +41,6 @@ namespace Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "DiffRight");
-
-            migrationBuilder.DropTable(
-                name: "Result");
         }
     }
 }

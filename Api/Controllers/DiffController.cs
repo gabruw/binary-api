@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Api.Utils;
+using Domain.DTO;
 using Domain.Entity;
 using Domain.IRepository;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ namespace Api.Controllers
     [Produces("application/json")]
     public class DiffController : ControllerBase
     {
-        private StoreValues _store = StoreValues.GetInstance();
+        private Storage _storage = Storage.GetInstance();
         private readonly IDiffLeftRepository _diffLeftRepository;
         private readonly IDiffRightRepository _diffRightRepository;
 
@@ -23,34 +24,24 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult StoreResult()
+        public IActionResult StorageResult()
         {
             try
             {
-                List<string> errors = new List<string>();
+                Response response = Validate.VerifyDiff(_storage.Left, _storage.Right);
 
-                if (_store.Left == null)
+                if (response.Errors.Count > 0)
                 {
-                    errors.Add("O valor 'left' não pode ser nulo.");
-                }
-
-                if (_store.Right == null)
-                {
-                    errors.Add("O valor 'right' não pode ser nulo.");
-                }
-
-                if (errors.Count > 0)
-                {
-                    return BadRequest(ResponseFactory.GetResponse(errors));
+                    return BadRequest(response);
                 }
                 else
                 {
-                    return Ok(ResponseFactory.GetResponse(_store.Left, _store.Right));
+                    return Ok(response);
                 }
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.ToString());
+                return UnprocessableEntity(Validate.FormatError(ex.ToString()));
             }
         }
 
@@ -67,17 +58,17 @@ namespace Api.Controllers
                 }
                 else
                 {
-                    return BadRequest(ResponseFactory.GetResponse(diffLeft.GetValidationMessage));
+                    return BadRequest(Validate.FormatObservationInclude(diffLeft));
                 }
 
-                _store.Left = diffLeft;
+                _storage.Left = diffLeft;
                 _diffLeftRepository.Incluid(diffLeft);
 
-                return Ok(ResponseFactory.GetResponse(diffLeft.GetValidationMessage));
+                return Ok(Validate.FormatObservationInclude(diffLeft));
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.ToString());
+                return UnprocessableEntity(Validate.FormatError(ex.ToString()));
             }
         }
 
@@ -94,18 +85,18 @@ namespace Api.Controllers
                 }
                 else
                 {
-                    return BadRequest(ResponseFactory.GetResponse(diffRight.GetValidationMessage));
+                    return BadRequest(Validate.FormatObservationInclude(diffRight));
                 }
 
-                _store.Right = diffRight;
+                _storage.Right = diffRight;
                 _diffRightRepository.Incluid(diffRight);
 
-                return Ok(ResponseFactory.GetResponse(diffRight.GetValidationMessage));
+                return Ok(Validate.FormatObservationInclude(diffRight));
 
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.ToString());
+                return UnprocessableEntity(Validate.FormatError(ex.ToString()));
             }
         }
 
@@ -117,11 +108,39 @@ namespace Api.Controllers
                 DiffLeft diffLeft = _diffLeftRepository.GetbyId(leftId);
                 DiffRight diffRight = _diffRightRepository.GetbyId(rightId);
 
-                return Ok(ResponseFactory.GetResponse(diffLeft, diffRight));
+                return Ok(Validate.VerifyDiff(diffLeft, diffRight));
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.ToString());
+                return UnprocessableEntity(Validate.FormatError(ex.ToString()));
+            }
+        }
+
+        [HttpGet("db/left")]
+        public IActionResult DbGetAllLeft()
+        {
+            try
+            {
+                IEnumerable<DiffLeft> diffLeftList = _diffLeftRepository.GetAll();
+                return Ok(diffLeftList);
+            }
+            catch (Exception ex)
+            {
+                return UnprocessableEntity(Validate.FormatError(ex.ToString()));
+            }
+        }
+
+        [HttpGet("db/right")]
+        public IActionResult DbGetAllRight()
+        {
+            try
+            {
+                IEnumerable<DiffRight> diffRightList = _diffRightRepository.GetAll();
+                return Ok(diffRightList);
+            }
+            catch (Exception ex)
+            {
+                return UnprocessableEntity(Validate.FormatError(ex.ToString()));
             }
         }
 
@@ -133,11 +152,11 @@ namespace Api.Controllers
                 DiffLeft diffLeft = _diffLeftRepository.GetbyId(id);
                 _diffLeftRepository.Remove(diffLeft);
 
-                return Ok();
+                return Ok(Validate.FormatObservationRemove(diffLeft));
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.ToString());
+                return UnprocessableEntity(Validate.FormatError(ex.ToString()));
             }
         }
 
@@ -149,11 +168,11 @@ namespace Api.Controllers
                 DiffRight diffRight = _diffRightRepository.GetbyId(id);
                 _diffRightRepository.Remove(diffRight);
 
-                return Ok();
+                return Ok(Validate.FormatObservationRemove(diffRight));
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.ToString());
+                return UnprocessableEntity(Validate.FormatError(ex.ToString()));
             }
         }
     }

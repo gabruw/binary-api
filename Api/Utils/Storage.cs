@@ -2,9 +2,9 @@
 
 namespace Api.Utils
 {
-    public class StoreValues
+    public class Storage
     {
-        public StoreValues()
+        public Storage()
         {
 
         }
@@ -12,13 +12,13 @@ namespace Api.Utils
         public DiffLeft Left { get; set; }
         public DiffRight Right { get; set; }
 
-        private static StoreValues _instance;
+        private static Storage _instance;
 
-        public static StoreValues GetInstance()
+        public static Storage GetInstance()
         {
             if (_instance == null)
             {
-                _instance = new StoreValues();
+                _instance = new Storage();
             }
 
             return _instance;

@@ -47,22 +47,6 @@ namespace Repository.Migrations
 
                     b.ToTable("DiffRight");
                 });
-
-            modelBuilder.Entity("Domain.Entity.Result", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(255)")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Result");
-                });
 #pragma warning restore 612, 618
         }
     }

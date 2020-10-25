@@ -36,15 +36,17 @@ e outra para o método Right (v1/diff/right).
   value: "01010100 01100101 01110011 01110100 01100101"
 }
 ```
-Após envie uma requisção GET para o método StoreResult (v1/diff).
+Após envie uma requisção GET para o método StorageResult (v1/diff).
 
 ## Documentação das rotas
 
-| Tipo    | Rota           | Método         | Parâmetro                    | Descrição                                                                                        |
-|---------|----------------|----------------|------------------------------|--------------------------------------------------------------------------------------------------|
-| GET     | v1/diff        | StoreResult    | N/A                          | Recupera o ultimo valor carregado no método "Left" e "Right" e retorna a comparação entre ambos. |
-| GET     | v1/diff/db     | DbResult       | leftId: Long - rightId: Long | Recupera os valores da base de dados e retorna a comparação entre ambos.                         |
-| POST    | v1/diff/left   | Left           | value: String                | Salva o valor na base de dados e o adiciona como ultimo valor a ser recuperado.                  |
-| POST    | v1/diff/right  | Right          | value: String                | Salva o valor na base de dados e o adiciona como ultimo valor a ser recuperado.                  |
-| DELETE  | v1/diff/left   | DbRemoveLeft   | id: Long                     | Remove o valor na base de dados.                                                                 |
-| DELETE  | v1/diff/right  | DbRemoveRight  | id: Long                     | Remove o valor na base de dados.                                                                 |
+| Tipo    | Rota             | Método         | Parâmetro                    | Descrição                                                                                        |
+|---------|------------------|----------------|------------------------------|--------------------------------------------------------------------------------------------------|
+| GET     | v1/diff          | StorageResult  | N/A                          | Recupera o ultimo valor carregado no método "Left" e "Right" e retorna a comparação entre ambos. |
+| GET     | v1/diff/db       | DbResult       | leftId: Long - rightId: Long | Recupera os valores da base de dados e retorna a comparação entre ambos.                         |
+| GET     | v1/diff/db/left  | DbGetAllLeft   | N/A 						 | Recupera todos os valores "Left" da base de dados.                                               |
+| GET     | v1/diff/db/right | DbGetAllRight  | N/A 						 | Recupera todos os valores "Right" da base de dados.   						                    |
+| POST    | v1/diff/left     | Left           | value: String                | Salva o valor na base de dados e o adiciona como ultimo valor a ser recuperado.                  |
+| POST    | v1/diff/right    | Right          | value: String                | Salva o valor na base de dados e o adiciona como ultimo valor a ser recuperado.                  |
+| DELETE  | v1/diff/db/left  | DbRemoveLeft   | id: Long                     | Remove o valor na base de dados.                                                                 |
+| DELETE  | v1/diff/db/right | DbRemoveRight  | id: Long                     | Remove o valor na base de dados.                                                                 |

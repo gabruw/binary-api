@@ -35,7 +35,6 @@ namespace Api
                     migration.MigrationsAssembly("Repository")));
 
             // Scope's
-            services.AddScoped<IResultRepository, ResultRepository>();
             services.AddScoped<IDiffLeftRepository, DiffLeftRepository>();
             services.AddScoped<IDiffRightRepository, DiffRightRepository>();
         }
