@@ -13,10 +13,11 @@ presentes no dia-a-dia do desenvolvedor como implementação de Design Patters, 
 Algumas implementações fora do escopo proposto foram adicionadas com o intuito de expandir a usabilidade.
 
 ### Executando a Aplicação
-1. Na pasta raiz do projeto, busque pelo caminho "~/Api/Api/bin/Debug/netcoreapp3.1"
+1. Na pasta raiz do projeto, busque pelo caminho "~/Api/bin/Debug/netcoreapp3.1"
 2. No caminho, execute o arquivo "Api.exe"
 
 ### Executando os Testes
+
 #### Visual Studio 2019
 1. Pressione "Ctrl + E, T" ou abra o "Gerenciador de Testes"
 2. Use o menu para executar os testes
@@ -27,6 +28,47 @@ Algumas implementações fora do escopo proposto foram adicionadas com o intuito
 3. Aguarde o resultado dos testes
 
 ## Básico
+
+### Migrations
+
+#### Visual Studio 2019
+1. No menu "Exibir", selecione o submenu "Outras Janelas" e clique em "Console do Gerenciador de Pacotes"
+2. No console, selecione o "Projeto padrão" como "Repository"
+3. Digite e execute a seguinte linha "Add-Migration {nome}", onde o "{nome}" é relativo ao nome da migração
+que deve ser definida pelo executor da aplicação (Exemplo VS2019-A)
+4. Após a finalização do corregamento, execute o comando "Update-Database {nome}", onde o "{nome}" é relativo ao nome da migração
+que foi gerada no passo anterior (Exemplo VS2019-B)
+
+##### Exemplo VS2019-A
+```
+Add-Migration FirstMigration
+```
+
+##### Exemplo VS2019-B
+```
+Update-Database FirstMigration
+```
+
+#### Comando
+1. Na pasta raiz do projeto, busque pelo caminho "~/Repository"
+2. Execute uma instância do Powershell apartir desta pasta
+3. Digite e execute a seguinte linha "dotnet ef migrations add {nome}", onde o "{nome}" é relativo ao nome da migração
+que deve ser definida pelo executor da aplicação (Exemplo VS2019-C)
+4. Após a finalização do corregamento, execute o comando "Update-Database {nome}", onde o "{nome}" é relativo ao nome da migração
+que foi gerada no passo anterior (Exemplo VS2019-D)
+
+##### Exemplo VS2019-C
+```
+dotnet ef migrations add FirstMigration
+```
+
+##### Exemplo VS2019-D
+```
+dotnet ef database update FirstMigration
+```
+
+### Usabilidade
+
 Para funcionalidade básica, envie uma requisição POST com o JSON no body (como no exemplo) para o método Left (v1/diff/left)
 e outra para o método Right (v1/diff/right).
 
