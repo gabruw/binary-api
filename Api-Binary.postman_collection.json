@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "20ddd6df-5d18-4ba7-9642-01529902111c",
+		"name": "Api-Binary",
+		"description": "Chamadas da API da avaliação.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:44381/v1/diff",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44381/v1/diff",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44381",
+					"path": [
+						"v1",
+						"diff"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44381/v1/diff/db?leftId=2&rightId=1",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44381/v1/diff/db?leftId=2&rightId=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44381",
+					"path": [
+						"v1",
+						"diff",
+						"db"
+					],
+					"query": [
+						{
+							"key": "leftId",
+							"value": "2"
+						},
+						{
+							"key": "rightId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44381/v1/diff/left",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": \"01000010 01100001 01100100 01101111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44381/v1/diff/left",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44381",
+					"path": [
+						"v1",
+						"diff",
+						"left"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44381/v1/diff/right",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": \"01000111 01100001 01100010 01110010 01101001 01100101 01101100\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44381/v1/diff/right",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44381",
+					"path": [
+						"v1",
+						"diff",
+						"right"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44381/v1/diff/db/left",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44381/v1/diff/db/left",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44381",
+					"path": [
+						"v1",
+						"diff",
+						"db",
+						"left"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44381/v1/diff/db/right",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44381/v1/diff/db/right",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44381",
+					"path": [
+						"v1",
+						"diff",
+						"db",
+						"right"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44381/v1/diff/db/left?id=1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44381/v1/diff/db/left?id=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44381",
+					"path": [
+						"v1",
+						"diff",
+						"db",
+						"left"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44381/v1/diff/db/right?id=1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44381/v1/diff/db/right?id=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44381",
+					"path": [
+						"v1",
+						"diff",
+						"db",
+						"right"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
