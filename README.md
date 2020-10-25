@@ -3,9 +3,14 @@
 ## Objetivo
 API em ASP .NET Core 3.1 que tem como intuito manipular dados binários.
 
-## Especificações
-ASP .NET Core 3.1
-MySQL 8
+## Especificações Técnicas
+- [X] MySQL 8
+- [X] ASP .NET Core 3.1
+- [X] Entity Framework Core
+
+## Testes efetuados
+- [X] Testes Unitários
+- [X] Testes de Integração
 
 ## Premissa
 Está aplicação NÃO possuí o intuito de simplificar a resolução do problema ao máximo, e sim exemplificar implementações diversas
